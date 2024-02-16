@@ -48,9 +48,12 @@ Random random = new Random();
     }
     public Dispositivo findByIdAndUpdate(long id, Dispositivo body) {
         Dispositivo found = this.findById(id);
-
         found.setStatus(body.getStatus());
         found.setType(body.getType());
         return dispositivoDAO.save(found);
+    }
+    public void findByIdAndDelete(long id) {
+        Dispositivo found = this.findById(id);
+        dispositivoDAO.delete(found);
     }
 }

@@ -41,4 +41,8 @@ public class DipendenteService {
         found.setSurname(body.getSurname());
         return dipendenteDAO.save(found);
     }
+    public void findByIdAndDelete(int id) {
+        Dipendente found = this.findById(id);
+        dipendenteDAO.delete(found);
+    }
 }
