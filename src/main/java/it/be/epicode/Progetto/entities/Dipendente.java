@@ -18,13 +18,13 @@ public class Dipendente {
     private String surname;
     private String email;
 
-    public Dipendente(long id, String username, String name, String surname, String email) {
-        this.id = id;
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-    }
+//    public Dipendente(long id, String username, String name, String surname, String email) {
+//        this.id = id;
+//        this.username = username;
+//        this.name = name;
+//        this.surname = surname;
+//        this.email = email;
+//    }
 
     public Dipendente(String username, String name, String surname, String email) {
         this.username = username;
