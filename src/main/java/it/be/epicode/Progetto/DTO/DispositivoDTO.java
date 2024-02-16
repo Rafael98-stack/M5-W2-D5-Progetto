@@ -8,5 +8,7 @@ public record DispositivoDTO(
         String status,
         @NotEmpty(message = "La tipologia del dispositivo è obbligatorio")
         String type
+//        @NotEmpty(message = "Id Dipendente obbligatorio")
+//Long dipendenteId
 ) {
 }

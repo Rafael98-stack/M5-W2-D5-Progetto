@@ -29,6 +29,7 @@ Random random = new Random();
         int rndm1 = new Random().nextInt(Stato_Dispositivo.values().length);
         int rndm2 = new Random().nextInt(Tipologia_Dispositivo.values().length);
         Dispositivo dispositivo = dispositivoService.save(body);
+//        return new DispositivoDTO(Stato_Dispositivo.values()[rndm1].toString(),Tipologia_Dispositivo.values()[rndm2].toString(),body.dipendenteId());
         return new DispositivoDTO(Stato_Dispositivo.values()[rndm1].toString(),Tipologia_Dispositivo.values()[rndm2].toString());
     }
 

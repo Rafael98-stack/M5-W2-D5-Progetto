@@ -23,4 +23,10 @@ public class Dispositivo {
         this.status = status;
         this.type = type;
     }
+
+    public Dispositivo(String status, String type, Dipendente dipendente) {
+        this.status = status;
+        this.type = type;
+        this.dipendente = dipendente;
+    }
 }

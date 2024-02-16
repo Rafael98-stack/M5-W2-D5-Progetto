@@ -2,6 +2,7 @@ package it.be.epicode.Progetto.services;
 
 import it.be.epicode.Progetto.DTO.DipendenteDTO;
 import it.be.epicode.Progetto.entities.Dipendente;
+import it.be.epicode.Progetto.exceptions.NotFoundException;
 import it.be.epicode.Progetto.repositories.DipendenteDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,5 +28,17 @@ public class DipendenteService {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
         return this.dipendenteDAO.findAll(pageable);
+    }
+
+    public Dipendente findById(long id) {
+        return dipendenteDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
+    }
+
+    public Dipendente findByIdAndUpdate(long id, Dipendente body) {
+        Dipendente found = this.findById(id);
+        found.setEmail(body.getEmail());
+        found.setName(body.getName());
+        found.setSurname(body.getSurname());
+        return dipendenteDAO.save(found);
     }
 }
