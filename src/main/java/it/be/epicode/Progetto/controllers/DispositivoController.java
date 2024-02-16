@@ -42,4 +42,10 @@ Random random = new Random();
     public Dispositivo findAndUpdate(@PathVariable long deviceId, @RequestBody DispositivoDTO body) {
         return dispositivoService.findByIdAndUpdate(deviceId, body);
     }
+    @DeleteMapping("/{deviceId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void findAndDelete(@PathVariable long deviceId) {
+        dispositivoService.findByIdAndDelete(deviceId);
+    }
+
 }
