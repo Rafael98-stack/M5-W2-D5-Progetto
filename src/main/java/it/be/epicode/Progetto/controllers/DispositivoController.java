@@ -38,4 +38,8 @@ Random random = new Random();
                                          @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id") String sortBy) {
         return dispositivoService.getDevices(page, size, sortBy);
     }
+    @PutMapping("/{deviceId}")
+    public Dispositivo findAndUpdate(@PathVariable long deviceId, @RequestBody DispositivoDTO body) {
+        return dispositivoService.findByIdAndUpdate(deviceId, body);
+    }
 }

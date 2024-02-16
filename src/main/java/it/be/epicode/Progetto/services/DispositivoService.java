@@ -46,10 +46,10 @@ Random random = new Random();
     public Dispositivo findById(long id) {
         return dispositivoDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
-    public Dispositivo findByIdAndUpdate(long id, Dispositivo body) {
+    public Dispositivo findByIdAndUpdate(long id, DispositivoDTO body) {
         Dispositivo found = this.findById(id);
-        found.setStatus(body.getStatus());
-        found.setType(body.getType());
+        found.setStatus(body.status());
+        found.setType(body.type());
         return dispositivoDAO.save(found);
     }
     public void findByIdAndDelete(long id) {

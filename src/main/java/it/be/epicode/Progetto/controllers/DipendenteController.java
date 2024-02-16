@@ -26,8 +26,14 @@ public class DipendenteController {
                                    @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id") String sortBy) {
         return dipendenteService.getEmployees(page, size, sortBy);
     }
-    @PutMapping("/{authorId}")
-    public Dipendente findAndUpdate(@PathVariable long employeeId, @RequestBody Dipendente body) {
+    @PutMapping("/{employeeId}")
+    public Dipendente findAndUpdate(@PathVariable long employeeId, @RequestBody DipendenteDTO body) {
         return dipendenteService.findByIdAndUpdate(employeeId, body);
     }
+    @DeleteMapping("/{employeeId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void findAndDelete(@PathVariable long employeeId) {
+        dipendenteService.findByIdAndDelete(employeeId);
+    }
+
 }

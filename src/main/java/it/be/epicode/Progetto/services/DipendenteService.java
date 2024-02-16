@@ -1,6 +1,7 @@
 package it.be.epicode.Progetto.services;
 
 import it.be.epicode.Progetto.DTO.DipendenteDTO;
+import it.be.epicode.Progetto.DTO.DispositivoDTO;
 import it.be.epicode.Progetto.entities.Dipendente;
 import it.be.epicode.Progetto.exceptions.NotFoundException;
 import it.be.epicode.Progetto.repositories.DipendenteDAO;
@@ -34,14 +35,15 @@ public class DipendenteService {
         return dipendenteDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
-    public Dipendente findByIdAndUpdate(long id, Dipendente body) {
+    public Dipendente findByIdAndUpdate(long id, DipendenteDTO body) {
         Dipendente found = this.findById(id);
-        found.setEmail(body.getEmail());
-        found.setName(body.getName());
-        found.setSurname(body.getSurname());
+        found.setEmail(body.email());
+        found.setName(body.name());
+        found.setSurname(body.surname());
+        found.setUsername(body.username());
         return dipendenteDAO.save(found);
     }
-    public void findByIdAndDelete(int id) {
+    public void findByIdAndDelete(long id) {
         Dipendente found = this.findById(id);
         dipendenteDAO.delete(found);
     }
