@@ -15,12 +15,9 @@ public class Dispositivo {
     private long id;
     private String status;
     private String type;
-
-    public Dispositivo(long id, String status, String type) {
-        this.id = id;
-        this.status = status;
-        this.type = type;
-    }
+    @ManyToOne
+    @JoinColumn(name = "dipendente_id")
+    private Dipendente dipendente;
 
     public Dispositivo(String status, String type) {
         this.status = status;

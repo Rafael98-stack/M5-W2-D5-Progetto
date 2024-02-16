@@ -19,18 +19,13 @@ public class DipendenteService {
 
     Random random = new Random();
     public Dipendente save(DipendenteDTO body) {
-        Dipendente dipendente = new Dipendente();
-        dipendente.setUsername(body.username());
-        dipendente.setName(body.name());
-        dipendente.setSurname(body.surname());
-        dipendente.setEmail(body.email());
-        return dipendenteDAO.save(dipendente);
+        Dipendente dipendente = new Dipendente(body.username(), body.name(), body.surname(), body.email());
+        return this.dipendenteDAO.save(dipendente);
     }
 
     public Page<Dipendente> getEmployees(int page, int size, String sort) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(sort));
-        return dipendenteDAO.findAll(pageable);
+        return this.dipendenteDAO.findAll(pageable);
     }
-
 }

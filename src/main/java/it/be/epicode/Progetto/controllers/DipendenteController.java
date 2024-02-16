@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class DipendenteController {
     @Autowired
     DipendenteService dipendenteService;
-DipendenteDTO dipendenteDTO;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DipendenteDTO saveDipendente(@RequestBody @Validated DipendenteDTO body) {
+    public DipendenteDTO saveEmployees(@RequestBody @Validated DipendenteDTO body) {
         Dipendente dipendente = dipendenteService.save(body);
         return new DipendenteDTO(dipendente.getUsername(),dipendente.getName(), dipendente.getSurname(), dipendente.getEmail());
     }
     @GetMapping
-    public Page<Dipendente> getAuthors(@RequestParam(defaultValue = "0") int page,
+    public Page<Dipendente> getEmployees(@RequestParam(defaultValue = "0") int page,
                                    @RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "id") String sortBy) {
         return dipendenteService.getEmployees(page, size, sortBy);
     }
